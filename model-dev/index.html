@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>模块化开发</title>
+  <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+  <div id="vm">
+    <h1>模块化开发</h1>
+  </div>
+  <script type="module" src="js/xm.js"></script>
+  <script type="module" src="js/xh.js"></script>
+  <script charset="utf-8" type="module">
+    const vm = new Vue({
+      el: '#vm'
+    })
+
+    // 导入方式1:统一导入
+    // import * as xm from "./js/xm.js"
+    // let xm1 = new xm.XM("小明1", 18)
+    // console.log("导入方式1:统一导入", xm1.print())
+    // console.log(xm.sum(12, 123))
+
+    
+    // 导入方式2:个别导入
+    // import { XM, sum } from "./js/xm.js"
+    // let xm1 = new XM("小明1", 18)
+    // console.log(xm1.print())
+    // console.log(sum(100, 129))
+
+
+    // 导入方式3:默认导入
+    import XM from "./js/xm.js"
+    let xm1 = new XM("小明1", 18)
+    console.log(xm1.print())
+  </script>
+
+</body>
+
+</html>

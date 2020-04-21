@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML 表单讲解</title>
+</head>
+
+<body>
+  <form action="" method="GET">
+    <fieldset>
+      <legend>简单表单</legend>
+      <label>用户名:
+        <input name='user' type="text" placeholder="palceholder" required>
+      </label>
+      <label for="pass">密码:</label>
+      <input name='pass' id="pass" type="text" value="默认值">
+      <br>
+      <label for="noedit">不可编辑:</label>
+      <input name='noedit' id="noedit" type="text" value="不可编辑但会提交" readonly>
+      <br>
+      <label for="nosend">不可提交:</label>
+      <input name='nosend' id="nosend" type="text" value="不可提交" disabled>
+
+      <section>
+        <label for="lessons">数据列表:</label>
+        <input type="text" id="lessons" name="lessons" list="datas">
+        <datalist id="datas">
+          <option value="pytho">python</option>
+          <option value="scala">Scala</option>
+          <option value="java">Java</option>
+          <option value="css">CSS</option>
+        </datalist>
+      </section>
+
+
+      <input type="search" name="search" id="search">
+      <input type="datetime-local" name="date" id="date">
+    </fieldset>
+    <button>提交</button>
+  </form>
+
+</body>
+
+</html>

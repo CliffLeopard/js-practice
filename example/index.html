@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+  <script src="../vue.js" charset="utf-8" type="text/javascript"></script>
+  <title>前端购物车案例</title>
+</head>
+
+<body>
+  <div id="vm">
+    <div v-if="books.length>0">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th v-for="header in headers">{{header}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="book,index in books">
+            <td v-for="value,key in book">
+              <span v-if="key === 'price'">
+                {{value | getPrice}}
+              </span>
+              <span v-else>
+                <button v-if="key === 'number'" @click="decrement(index)" v-bind:disabled="value<=1">-</button>
+                {{value}}
+                <button v-if="key === 'number'" @click="increment(index)">+</button>
+              </span>
+            </td>
+            <td><button @click="remove(index)">移除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <h1>总价:¥ {{totalPrice2}}</h1>
+    </div>
+    <h1 v-else>购物车为空</h1>
+
+  </div>
+  <script src="main.js" charset="utf-8" type="text/javascript"></script>
+</body>
+
+</html>

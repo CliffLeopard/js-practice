@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+main article {
+  margin: 30px auto ;
+  width: 300px;
+  height: 500px;
+  outline: solid 1px black;
+  display: flex;
+}
+main .father1 {
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  order: 0;
+}
+main .father1 section {
+  width: fit-content;
+  height: 40px;
+  display: flex;
+  padding: 10px;
+  background-color: royalblue;
+  outline: solid 1px darkblue;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+}
+/**
+经过上面的一系列测试可以知道,Flex布局的精髓在于弄清楚轴的概念
+主轴和交叉轴
+显然,在Flex中,当flex-direction 设置为row时,主轴为从左到右方向,collumn时为上下方向. 
+当 flex-wrap:设置为wrap时,可以换行,此时如果内容溢出造成换行了,则可以有多条主轴. 否则只有一条主轴
+交叉轴为与主轴方向垂直的轴线. 有且仅有一条交叉轴.
+
+justify_content:设置主轴方向的布局方式, 选项有: flex-start,flex-end,center,space-betwwen,space-around
+align-items:设置交叉轴方向的对其方式: flex-start,flex-end,center,stretch,baseline
+当有多条主轴时, align_content 用于设置交叉轴方向的布局. 属性值有:flex-start,flex-end,center,space-between,space-around,stretch
+align-self:容器内元素设置,可以覆盖容器的align-items
+
+另外容器内元素,进行缩放有flex-shrink,flex-grow,flex-basic,以及组合flex
+**/

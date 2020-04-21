@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="vue.js" charset="utf-8" type="text/javascript"></script>
+</head>
+
+<body>
+  <div id="vm">
+    <ul>
+      <li v-for='item in message' v-bind:class={red:item==selected}
+        @click='selected = item'> {{item}}</li>
+    </ul>
+    <h1 v-if='score>80'>优秀</h1>
+    <h1 v-else-if='score>70'>良</h1>
+    <h1 v-else-if='score>60'>及格</h1>
+    <h1 v-else>不及格</h1>
+
+  </div>
+  <script type="text/javascript">
+    const vm = new Vue({
+      el: '#vm',
+      props: {
+
+      },
+      data: {
+        message: ['大秦帝国', '低俗小说', '冰风暴', '法克鱿'],
+        selected: '大秦帝国',
+        score:75
+      },
+      methods: {
+
+      },
+
+    })
+    vm.$watch('color',
+      function (before, after) {
+        console.log(before, after)
+      }
+    )
+
+  </script>
+  <style>
+    .red {
+      color: red;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .black {
+      color: black;
+    }
+
+    .green {
+      color: green;
+    }
+  </style>
+</body>
+
+</html>

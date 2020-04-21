@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="./js/vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+  <div id='vm'>
+    <h1>使用CommonJS规范实现模块化</h1>
+  </div>
+
+  <script src="./js/xm.js"></script>
+  <script charset="utf-8" type="text/javascript">
+    const vm = new Vue({
+      el: '#vm',
+      data: {
+
+      }
+    })
+    console.log(xm.sum(100, 200))
+    console.log(xm.flag)
+    console.log(new xm.XM("小明",18).print())
+  </script>
+</body>
+
+</html>

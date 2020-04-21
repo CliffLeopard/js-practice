@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="vue.js" charset="utf-8" type="text/javascript"></script>
+  <title>v-model与父子组件间的交互通讯</title>
+</head>
+
+<div id="vm">
+  <father_cpt></father_cpt>
+</div>
+
+
+<template id='son_cpt'>
+  <div>
+    <h4>子组件</h4>
+    <input type="text" v-model.lazy="son_message" @change="son_input">子组件输入:{{son_message}}
+    <h4>接收到来自父组件的消息:{{son_prop_message}}</h4>
+  </div>
+</template>
+
+<template id='father_cpt'>
+  <div>
+    <son_cpt :son_prop_message="father_message" @input="receive_son_message" ref="son_cpt"></son_cpt>
+    <br><br>
+    <h4>父组件</h4>
+    <input type="text" v-model.lazy="father_message" @change="father_input">父组件输入:{{father_message}}
+    <h4>接收到来自子组件的消息:{{received_from_son}}</h4>
+  </div>
+</template>
+
+
+<script charset="utf-8" type="text/javascript">
+
+  const son_cpt = {
+    template: '#son_cpt',
+    props: {
+      son_prop_message: String
+    },
+    data() {
+      return {
+        son_message: this.son_prop_message
+      }
+    },
+    methods: {
+      son_input(event) {
+        console.log("son_input", event.target.value)
+        this.$emit("input", event.target.value)
+      },
+      prop_change(value) {
+        console.log("prop_change", value)
+        this.son_message = value
+      }
+    }
+  }
+
+  const father_cpt = {
+    template: '#father_cpt',
+    data() {
+      return {
+        father_message: "",
+        received_from_son: ""
+      }
+    },
+    methods: {
+      receive_son_message(value) {
+        console.log("receive_son_message", value)
+        this.received_from_son = value
+        this.father_message = value
+      },
+      father_input(event) {
+        console.log("father_input", event.target.value)
+        this.received_from_son = event.target.value
+        this.$refs.son_cpt.prop_change(event.target.value)
+      }
+    },
+    components: {
+      son_cpt
+    }
+
+  }
+
+  const vm = new Vue({
+    el: '#vm',
+    components: {
+      father_cpt
+    }
+  })
+</script>
+
+</html>

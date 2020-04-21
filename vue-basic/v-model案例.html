@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>v-model案例</title>
+  <script src="vue.js" charset="utf-8" type="text/javascript"></script>
+</head>
+<div id="vm">
+  <div style="padding: 10px;">
+    <h4>v-model与select的搭配使用:</h4>
+    <span>性别:{{sex}}</span>
+    <label for="male">
+      <input type="radio" id="male" name="sex" v-model='sex' value="男">男
+    </label>
+    <label for="female">
+      <input type="radio" id="female" name="sex" v-model='sex' value="女">女
+    </label>
+  </div>
+
+  <div style="padding: 10px;">
+    <span>爱好:</span>
+    <label v-for="item in ori_favors" :for="item">
+      <input type="checkbox" :id="item" v-model="favors" :value='item'>{{item}}
+    </label>
+    <h4>我喜欢的运动:{{favors}}</h4>
+  </div>
+
+  <div style="padding: 10px;">
+    <h4>v-model与input的搭配使用:</h4>
+    <label for="agree">
+      <input type="checkbox" id="agree" v-model="isAgree" value="true">同意
+    </label>
+    <button :disabled='!isAgree'>下一步</button>
+  </div>
+
+  <div style="padding: 10px;">
+    <h4>v-model与select的搭配使用:</h4>
+    <select v-model="fruit">
+      <option v-for="fr in ori_fruit" :value="fr">{{fr}}</option>
+    </select>
+    <h4>我喜欢的水果是:{{fruit}}</h4>
+
+    <select v-model="fruits" multiple>
+      <option v-for="fr in ori_fruit" :value="fr">{{fr}}</option>
+    </select>
+    <h4>我喜欢的水果是:{{fruits}}</h4>
+  </div>
+
+  <div style="padding: 10px;">
+    <h4>修饰符的使用:lazy</h4>
+    <input type="text" v-model.lazy="message">{{message}}
+    <h4>修饰符的使用:number</h4>
+    <input type="text" v-model.number="number"> {{number}} : {{typeof number}}
+    <h4>修饰符的使用:trim</h4>
+  </div>
+
+</div>
+<script charset="utf-8" type="text/javascript">
+  const vm = new Vue({
+    el: '#vm',
+    data: {
+      sex: "男",
+      isAgree: false,
+      ori_favors: ['足球', '篮球', '排球', '乒乓球', '玻璃球', '水球', '冰球'],
+      ori_fruit: ['香蕉', '苹果', '鸭梨', '荔枝', '山楂', '猕猴桃'],
+      favors: [],
+      fruit: "香蕉",
+      fruits: [],
+      message: "Hello",
+      number: 0
+    },
+    computed: {
+
+    },
+    methods: {
+
+    }
+  })
+</script>
+
+</html>

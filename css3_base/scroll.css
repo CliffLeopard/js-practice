@@ -1,0 +1,193 @@
+* {
+  border: 0;
+  margin: 0;
+  background-color: gray;
+}
+main {
+  border: solid 5px blueviolet;
+  width: 500px;
+  height: 200px;
+  overflow: scroll;
+  margin: auto;
+}
+main section h2 {
+  color: whitesmoke;
+  position: sticky;
+  top: 0;
+}
+main section:nth-of-type(even) h2 {
+  background-color: blue;
+}
+main section:nth-of-type(odd) h2 {
+  background-color: green;
+}
+main section p {
+  color: black;
+  background-color: white;
+  text-indent: 2em;
+  text-transform: capitalize;
+  width: inherit;
+  height: fit-content;
+  width: -webkit-fill-available;
+}
+main section p::first-letter {
+  color: peru;
+  font-size: large;
+}
+footer {
+  margin: 30px auto;
+  width: fit-content;
+}
+footer p {
+  border-bottom: solid 3px  orange;
+  outline: solid 1px black;
+  border-radius: 50%;
+  padding: 20px;
+}
+span.shape {
+  float: left;
+  width: 100px;
+  height: 100px;
+  padding: 30px;
+  margin: 60px;
+  border: solid 3px green;
+  outline: solid 5px black;
+  shape-outside: margin-box;
+  clip-path: circle(50% at center);
+  background-color: red;
+}
+@keyframes autoplay {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.box {
+  width: 300px;
+  height: 150px;
+  margin: 10em auto;
+  border-width: 150px 0 0 0;
+  border-style: solid;
+  border-color: #000;
+  border-radius: 50%;
+  position: relative;
+  animation: autoplay 1.5s linear infinite;
+}
+.box::before {
+  content: "";
+  position: absolute;
+  top: -75px;
+  left: 0;
+  width: 45px;
+  height: 45px;
+  background: #000;
+  border: 52.5px solid #fff;
+  border-radius: 50%;
+}
+.box::after {
+  content: "";
+  position: absolute;
+  top: -75px;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  border: 52.5px solid #000;
+  border-radius: 50%;
+}
+.box2 {
+  width: 300px;
+  height: 300px;
+  margin: 10em auto;
+  border-width: 150px 0 150px 0;
+  border-style: solid;
+  border-color: black black white white;
+  border-radius: 50%;
+  position: relative;
+  animation: autoplay2 1.5s linear infinite;
+  box-sizing: border-box;
+}
+.box2::before {
+  content: "";
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  border-radius: 50%;
+  border: 52.5px solid white;
+  box-sizing: border-box;
+  top: -75px;
+  position: absolute;
+}
+.box2::after {
+  content: "";
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-radius: 50%;
+  border: solid 52.5px black;
+  box-sizing: border-box;
+  position: absolute;
+  right: 0;
+  top: -75px;
+}
+@keyframes autoplay2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.taiji {
+  width: 300px;
+  height: 300px;
+  position: relative;
+  border-top: solid 150px black;
+  border-bottom: solid 150px white;
+  border-radius: 50%;
+  box-sizing: border-box;
+  margin: auto;
+  animation: autoplay2 1.5s linear infinite;
+}
+.taiji::before {
+  content: "";
+  width: 150px;
+  height: 150px;
+  background-color: black;
+  border: solid 55px white;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  top: -75px;
+}
+.taiji::after {
+  content: "";
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  box-sizing: border-box;
+  border: solid 55px black;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  bottom: -75px;
+}
+h2 {
+  margin: 40px;
+}
+.surround {
+  width: 300px;
+  height: 300px;
+  background-color: green;
+  margin: auto;
+  outline: solid 10px red;
+  padding: 50px;
+  border: solid 30px pink;
+}
+.surround .inside {
+  width: 50px;
+  height: 50px;
+  background-color: yellow;
+}

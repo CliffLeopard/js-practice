@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>箭头函数</title>
+</head>
+
+<body>
+  <script charset="utf-8" type="text/javascript">
+    const sum = function (a, b) {
+      return a + b;
+    }
+
+    const sum2 = (a, b) => { return a + b }
+
+    const sum3 = (a, b) => a + b
+
+    const pow = num => num * num
+
+    console.log(sum(10, 11))
+    console.log(sum2(10, 11))
+    console.log(sum3(10, 11))
+    console.log(pow(11))
+
+    setTimeout(() => {
+      console.log(this)
+    }, 100)
+
+    setTimeout(function () {
+      console.log(this)
+    }, 10)
+
+    const obj = {
+      name: "哈哈",
+      aaa: function () {
+
+        console.log("aaa", this.name)
+        setTimeout(() => {
+          console.log(this.name)
+        }, 1000)
+
+        setTimeout(function () {
+          console.log(this.name)
+        }, 2000)
+      }
+    }
+
+    obj.aaa()
+
+  </script>
+</body>
+
+</html>

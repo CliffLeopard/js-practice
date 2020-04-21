@@ -1,0 +1,23 @@
+main{
+  border: solid 1px red;
+  padding: 4%;
+  box-sizing:inherit;
+  article{
+    border: solid 1px blue;
+    width: 38%;
+    height: 300px;
+    float: left;
+  }
+  footer{
+    border: solid 1px green;
+    width: 58%;
+    height: 300px;
+    float: right;
+  }
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script type="text/javascript" charset="utf-8" src="vue.js"></script>
+  <title>v-for绑定key值</title>
+</head>
+<div id='vm'>
+  <ul>
+    <li v-for='item,index in elements' >{{index}}:{{item}}</li>
+  </ul>
+</div>
+<script type="text/javascript" charset="utf-8">
+  vm = new Vue({
+    el: "#vm",
+    data: {
+      elements: ['A', 'B', 'C', 'D', 'E', 'F']
+    }
+  })
+</script>
+
+</html>

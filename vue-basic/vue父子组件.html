@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="vue.js" charset="utf-8" type="text/javascript"></script>
+  <title>vue父子组件</title>
+</head>
+
+<body>
+  <div id='vm'>
+    <father_cpt></father_cpt>
+  </div>
+  <template id='son_cpt'>
+    <div>
+      <h4>子组件</h4>
+      <h4>子组件哈哈哈</h4>
+      <h4>{{son_message}}</h4>
+      <h4>{{son_favors}}</h4>
+      <button @click="son_click(son_message)">子组件按钮</button>
+    </div>
+  </template>
+  <script type="text/javascript" charset="utf-8">
+
+    const son_cpt = {
+      template: '#son_cpt',
+      // props: ['son_message','son_favors']
+      // props:{
+      //   son_message:String,
+      //   son_favors:Array
+      // }
+      props: {
+        son_message: {
+          type: String,
+          // required:true,
+          default: "SON Defualt Message"
+        },
+        son_favors: {
+          type: Array,
+          // validator(value){
+          //   return true
+          // },
+          default() {
+            return []
+          }
+        }
+      },
+      methods: {
+        son_click(message) {
+          console.log("son_click", message)
+          this.$emit("son_click_send", message)
+        }
+      }
+    }
+
+    const father_cpt = Vue.extend({
+      template: `
+        <div>
+          <h4>父组件</h4>
+          <h4>父组件哈哈哈</h4>
+          <son_cpt :son_message="message" :son_favors="favorts" @son_click_send="father_recieved"></son_cpt>
+        </div>
+      `,
+      data: function () {
+        return {
+          message: "Hello World",
+          favorts: ['足球', '篮球', '排球', '冰球']
+        }
+      },
+      methods: {
+        father_recieved(message) {
+          console.log("father_recieved", message)
+        }
+      },
+      components: {
+        son_cpt
+      }
+    })
+
+    const vm = new Vue({
+      el: '#vm',
+      data: {
+        message: "Hello World",
+        favorts: ['足球', '篮球', '排球', '冰球']
+      },
+      components: {
+        father_cpt
+      }
+    })
+  </script>
+</body>
+
+</html>

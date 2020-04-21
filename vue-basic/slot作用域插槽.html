@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="vue.js" charset="utf-8" type="text/javascript"></script>
+  <title>slot作用域插槽</title>
+</head>
+
+<body>
+  <div id='vm'>
+    <son_cpt></son_cpt>
+    <son_cpt>
+      <template slot-scope="slot">
+        <span> {{slot.data.join(';')}}</span>
+      </template>
+    </son_cpt>
+    <son_cpt></son_cpt>
+  </div>
+</body>
+<template id="son_cpt">
+  <div>
+    <slot :data="fruits">
+      <ul>
+        <li v-for="fruit in fruits">{{fruit}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+<script charset="utf-8" type="text/javascript">
+  const vm = new Vue({
+    el: '#vm',
+    data: {
+
+    },
+    components: {
+      son_cpt: {
+        template: '#son_cpt',
+        data() {
+          return {
+            fruits: ['苹果', '香蕉', '荔枝', '榴莲', '水蜜桃', '葡萄']
+          }
+        }
+      }
+    }
+  })
+</script>
+
+</html>
